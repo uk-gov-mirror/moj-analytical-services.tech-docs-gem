@@ -20,7 +20,6 @@
     <% end %>
 
     <%= stylesheet_link_tag :print, media: 'print' %>
-    <%= javascript_include_tag :application %>
 
     <% meta_tags.tags.each do |property, content| %>
       <%= tag :meta, property: property, content: content %>
@@ -76,7 +75,7 @@
         </div>
       </div>
     </div>
-
+    <%= javascript_include_tag :application %>
     <%= partial 'layouts/analytics' %>
   </body>
 </html>
