@@ -1,7 +1,10 @@
 # Changelog
 
-## 2.0.5
+## Unreleased
 
+Fix bug in API docs that shows required attributes as optional (#113)
+
+## 2.0.5
 
 Adds [new global configuration option](https://github.com/alphagov/tech-docs-gem/pull/122) that controls whether review banners appear or not at the bottom of pages when expiry dates are set in the frontmatter.
 
