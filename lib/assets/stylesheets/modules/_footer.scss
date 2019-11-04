@@ -1,6 +1,7 @@
 .app-footer {
   padding-left: govuk-spacing(3);
   padding-right: govuk-spacing(3);
+  margin-top: auto;
 
   @include govuk-media-query($from: tablet) {
     padding-left: govuk-spacing(6);
