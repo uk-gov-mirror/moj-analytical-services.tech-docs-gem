@@ -1,5 +1,37 @@
 # Changelog
 
+## Unreleased
+
+## 2.0.12
+
+- [Pull request #179: Use current markup for header and footer](https://github.com/alphagov/tech-docs-gem/pull/179)
+- [Pull request #178: Update dependencies and fix tests](https://github.com/alphagov/tech-docs-gem/pull/178) – includes updating GOV.UK Frontend to v3.6.0.
+- [Pull request #176: Use correct separator for page titles](https://github.com/alphagov/tech-docs-gem/pull/176)
+
+## 2.0.11
+
+### Fixes
+
+- [Pull request #162: Fix line height spacing for multiline code elements](https://github.com/alphagov/tech-docs-gem/pull/162)
+- [Pull request #165: Update header alignment to match layout](https://github.com/alphagov/tech-docs-gem/pull/165)
+
+## 2.0.10
+
+### Fixes
+
+- [Pull request #160: Make sure IDs on collapsible navigation are unique](https://github.com/alphagov/tech-docs-gem/pull/160)
+
+## 2.0.9
+
+### Fixes
+
+- [Pull request #154: Fix table columns breaking content](https://github.com/alphagov/tech-docs-gem/pull/154).
+- [Pull request #155: Ensure the page can be pinch to zoomed](https://github.com/alphagov/tech-docs-gem/pull/155).
+
+## 2.0.8
+
+Use of  `govuk-lint` replaced with `rubocop-govuk` due to the former [becoming deprecated](https://github.com/alphagov/govuk-lint/pull/133).
+
 ## 2.0.7
 
 A small release to fix an issue where code blocks font size was too large on some browsers.

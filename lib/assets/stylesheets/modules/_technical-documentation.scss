@@ -8,9 +8,7 @@
   color:  $govuk-text-colour;
 
   @include govuk-media-query(tablet) {
-    // We add 2 pixels to the gutter here to ensure there's sufficient spacing between
-    // an anchor link (see _anchored-heading.scss) on a heading and the left-hand pane.
-    margin: 0 govuk-spacing(6) (govuk-spacing(6) + 2px);
+    margin: 0 govuk-spacing(6) govuk-spacing(6);
   }
 
   .has-search-results-open & {
@@ -77,7 +75,6 @@
 
   table {
     @include govuk-responsive-margin(6, "bottom");
-    table-layout: fixed;
   }
 
   pre + h2 {
@@ -142,6 +139,8 @@
     font-family: monaco, Consolas, "Lucida Console", monospace;
     font-size: 15px;
     font-size: 0.9375rem;
+    // Match the line-height outside of tables
+    line-height: 1.4;
     color: $code-0E;
 
     @include govuk-media-query(tablet) {
