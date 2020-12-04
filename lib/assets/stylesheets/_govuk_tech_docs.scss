@@ -8,13 +8,7 @@ $govuk-assets-path: "/assets/govuk/assets/";
 @import "govuk/core/all";
 @import "govuk/objects/all";
 
-@import "govuk/components/footer/footer";
-@import "govuk/components/header/header";
-@import "govuk/components/inset-text/inset-text";
-@import "govuk/components/input/input";
-@import "govuk/components/tag/tag";
-@import "govuk/components/skip-link/skip-link";
-@import "govuk/components/warning-text/warning-text";
+@import "govuk/components/all";
 
 @import "govuk/utilities/all";
 @import "govuk/overrides/all";
