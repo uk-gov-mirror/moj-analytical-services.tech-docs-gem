@@ -15,14 +15,18 @@
 
     &__list {
       li {
+        a {
+          @include govuk-link-decoration;
+          @include govuk-link-style-no-visited-state;
+          @include govuk-link-style-no-underline;
+        }
+
         a:link, a:visited {
           display: block;
           position: relative;
           padding: 8px govuk-spacing(6) 8px govuk-spacing(2);
           margin: 0 -1 * govuk-spacing(3);
           border-left: 5px solid transparent;
-          text-decoration: none;
-          color: $govuk-link-colour;
 
           @include govuk-media-query(tablet) {
             &.toc-link--in-view  {
@@ -33,19 +37,15 @@
           }
         }
 
+        a:hover {
+          @include govuk-link-hover-decoration;
+        }
+
         a:focus {
-          outline: none;
+          text-decoration: none;
 
           span {
             @include govuk-focused-text;
-          }
-        }
-
-        a:hover {
-          text-decoration: underline;
-
-          &:focus {
-            text-decoration: none;
           }
         }
       }
@@ -127,7 +127,7 @@
           display: block;
           position: relative;
           z-index: 10;
-
+          width: 100%;
           padding: govuk-spacing(3) govuk-spacing(3) 10px;
 
           background: govuk-colour("light-grey");
@@ -135,10 +135,12 @@
             background: transparentize(govuk-colour("light-grey"), 0.05);
             backdrop-filter: blur(2px);
           }
+          border: 0;
           border-bottom: 1px solid govuk-colour("mid-grey");
           box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
           color:  $govuk-text-colour;
           text-decoration: none;
+          text-align: left;
 
           &:focus {
             @include govuk-focused-text;
@@ -150,12 +152,12 @@
           height: 20px;
           float: right;
 
-          background-image: url('/images/govuk-icn-numbered-list.png');
+          background-image: image-url('/images/govuk-icn-numbered-list.png');
           background-repeat: no-repeat;
           background-position: left center;
 
           @include govuk-device-pixel-ratio {
-            background-image: url('/images/govuk-icn-numbered-list@2x.png');
+            background-image: image-url('/images/govuk-icn-numbered-list@2x.png');
             background-size: 20px 20px;
           }
         }
@@ -170,18 +172,18 @@
         position: sticky;
         right: 0;
         top: 0;
-
+        border: 0;
         float: right;
         width: 20px;
         height: 20px;
         cursor: pointer;
 
-        background-image: url('/images/govuk-icn-close.png');
+        background-image: image-url('/images/govuk-icn-close.png');
         background-repeat: no-repeat;
         background-position: left center;
 
         @include govuk-device-pixel-ratio {
-          background-image: url('/images/govuk-icn-close@2x.png');
+          background-image: image-url('/images/govuk-icn-close@2x.png');
           background-size: 20px 20px;
         }
 
@@ -207,6 +209,10 @@
           height: 100%;
           overflow: hidden;
           pointer-events: none;
+          // set visibility hidden on the body when TOC is open
+          // this is a hack to prevent tabbing to out-of-view elements when the TOC is active
+          // it's preferable to keyboard trapping... probably.
+          visibility: hidden;
         }
 
         .toc-show {
@@ -214,6 +220,7 @@
         }
 
         .toc {
+          visibility: visible;
           display: block;
           pointer-events: auto;
           position: fixed;

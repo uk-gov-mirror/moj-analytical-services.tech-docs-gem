@@ -1,15 +1,8 @@
+$input-size: 40px;
+
 @include govuk-media-query($media-type: screen) {
   .page-title + .search {
     margin-top: govuk-spacing(6);
-  }
-
-  .js .search__label {
-    position: absolute;
-    left: -9999em;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
   }
 }
 
@@ -19,55 +12,84 @@
   }
 }
 
-html.has-search-results-open {
-  overflow: hidden;
-  .app-pane__content {
-    overflow: hidden;
-  }
-}
-.search-results {
-  display: none;
-  &.is-open {
-    display: block;
-  }
+.js .search__label {
+  @extend .govuk-visually-hidden;
 }
 
-.search-results {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 600;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-    @include govuk-media-query(tablet) {
-      padding: govuk-spacing(6);
-      top: 0;
-      // The width of the sidebar
-      left: 330px;
-    }
-
-    a:link, a:visited {
-      text-decoration: none;
-      color: $govuk-link-colour;
-    }
-
-    a:hover {
-      text-decoration: underline;
-
-      &:focus {
-        text-decoration: none;
-      }
-    }
-    a:focus {
-      outline: none;
-      @include govuk-focused-text;
-    }
-  }
-.search-results__inner {
+.search__form {
   position: relative;
+}
+
+.search__input {
+  width: 230px;
+  width: calc(100% - #{$input-size});
+}
+
+.search__button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 0;
+  background-color: govuk-colour('blue');
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  width: $input-size;
+  height: 100%;
+  background-image: image-url('/images/search-button.png');
+  background-repeat: no-repeat;
+  background-position: 2px 50%;
+  text-indent: -5000px;
+  overflow: hidden;
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline-offset: 0;
+    box-shadow: inset 0 0 0 $govuk-border-width-form-element * 2 govuk-colour("black");
+
+    @include govuk-if-ie8 {
+      border-width: $govuk-border-width-form-element * 2;
+    }
+  }
+}
+
+@include govuk-media-query($until: tablet) {
+  html.js.has-search-results-open:not(.toc-open) {
+    .toc {
+      display: block;
+      padding-bottom: 0;
+    }
+
+    .toc__close {
+      display: none;
+    }
+
+    .toc__list {
+      display: none;
+    }
+  }
+}
+
+.search-results {
+  @include govuk-media-query(tablet) {
+    // Create basis for the search results caret (below)
+    position: relative;
+
+    @include govuk-font($size: 16);
+    padding-top: govuk-spacing(6);
+  }
+
+  a {
+    @include govuk-link-common;
+    @include govuk-link-style-no-visited-state;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+.search-results__inner {
   background: govuk-colour("white");
   border-top: 1px solid govuk-colour("mid-grey");
   max-width: 40rem;
@@ -78,11 +100,11 @@ html.has-search-results-open {
     &::after {
       content: '';
       position: absolute;
-      top: 10px;
+      top: 35px;
       left: -9px;
       width: 10px;
       height: 20px;
-      background: no-repeat url('/images/search-result-caret.svg') center right;
+      background: no-repeat image-url('/images/search-result-caret.svg') center right;
       background-size: contain;
     }
   }
@@ -91,53 +113,6 @@ html.has-search-results-open {
   @include govuk-font($size: 27, $weight: bold);
   margin-bottom: govuk-spacing(6);
 }
-.search-results__close {
-  @include govuk-font($size: 16);
-  position: absolute;
-  top: 18px;
-  right: 20px;
-  appearance: none;
-  -webkit-appearance: none;
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-
-  &:focus {
-    background-color: $govuk-focus-colour;
-    outline: $govuk-focus-width solid transparent;
-    box-shadow: inset 0 0 0 1px $govuk-focus-colour;
-  }
-
-  &:focus:not(:active):not(:hover) {
-    border-color: $govuk-focus-colour;
-    color: $govuk-focus-text-colour;
-    background-color: $govuk-focus-colour;
-    box-shadow: 0 2px 0 $govuk-focus-text-colour;
-  }
-
-  &::after {
-    content: '';
-    display: inline-block;
-    vertical-align: middle;
-    padding-left: 8px;
-    height: 18px;
-    width: 18px;
-    background: no-repeat url('/images/govuk-icn-close.png') center right;
-    @include govuk-device-pixel-ratio {
-      background-image: url('/images/govuk-icn-close@2x.png');
-    }
-    background-size: contain;
-  }
-}
-.search-results__close-label {
-  position: absolute;
-  left: -9999em;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
 .search-result {
   margin-bottom: govuk-spacing(6);
 }
@@ -145,4 +120,24 @@ html.has-search-results-open {
   background-color: transparent;
   color: inherit;
   font-weight: bold;
+
+  // In forced color mode some browsers will keep the background transparent
+  // but set the text colour black, making the highlighted text unreadable.
+  // The following blocks fix this by setting the text colour to be the same as
+  // other text in a way that forced color mode will respect.
+
+  @media screen and (-ms-high-contrast: active) {
+    // IE does not support `CanvasText`,
+    // and `currentColor` does not work with Blink
+    color: currentColor;
+  }
+
+  @media screen and (forced-colors: active) {
+    background-color: Canvas;  // needed for Firefox
+    color: CanvasText;
+  }
+}
+
+.js .search-help__no-js {
+  display: none;
 }

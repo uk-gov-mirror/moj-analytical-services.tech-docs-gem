@@ -67,6 +67,7 @@ module GovukTechDocs
     context.activate :api_reference
 
     context.helpers do
+      include GovukTechDocs::PathHelpers
       include GovukTechDocs::TableOfContents::Helpers
       include GovukTechDocs::ContributionBanner
 
@@ -113,10 +114,12 @@ module GovukTechDocs
           url:     { index: false, store: true },
         }
 
-        search.pipeline_remove = %w[stopWordFilter]
+        search.pipeline_remove = %w[stemmer stopWordFilter]
 
         search.tokenizer_separator = '/[\s\-/]+/'
       end
+    else
+      context.ignore "search/*"
     end
   end
 end

@@ -2,6 +2,141 @@
 
 ## Unreleased
 
+## 3.2.1
+
+### Fixes
+
+- [#296: Fix Nokogiri Node.new deprecation warnings](https://github.com/alphagov/tech-docs-gem/pull/296) (thanks [@timja](https://github.com/timja))
+
+## 3.2.0
+
+### New features
+
+You can now [configure your Tech Docs Template (TDT) to build your documentation site to use relative links to pages and assets](https://tdt-documentation.london.cloudapps.digital/configure_project/global_configuration/#build-your-site-using-relative-links).
+
+Thanks [@eddgrant](https://github.com/eddgrant) for contributing this feature and the associated fixes.
+
+This change was introduced in [pull request #291: Support sites deployed on paths other than "/" (by generating relative links)](https://github.com/alphagov/tech-docs-gem/pull/291). 
+
+## 3.1.0
+
+### New features
+
+There are some steps you should follow as the Technical Documentation Template (TDT) now uses GOV.UK Frontend 4.0.0. 
+
+1. Update your documentation site to use the latest template version. You can [follow the TDT guidance on using the latest template version](https://tdt-documentation.london.cloudapps.digital/maintain_project/use_latest_template/).
+2. Check your documentation site displays correctly. If your site does not display correctly, you can refer to the [GOV.UK Frontend 4.0.0 release note](https://github.com/alphagov/govuk-frontend/releases/tag/v4.0.0) for more information. 
+
+## 3.0.1
+
+### Fixes
+
+We’ve made the following fixes to the tech docs gem in [pull request #281: Don't break TOC when OpenAPI description includes headers](https://github.com/alphagov/tech-docs-gem/pull/281): 
+
+* we now render OpenAPI Markdown with the same Markdown renderer as other documents
+* table of contents (TOC) uses `TechDocsHTMLRenderer` to render the headings with IDs
+
+Thanks to [@jamietanna](https://github.com/jamietanna) for contributing to this issue and its solution.
+
+## 3.0.0
+
+### Breaking changes
+
+The search user experience is now more accessible for screenreader users. Search results are now on a separate page instead of a modal window.
+
+Users can no longer see search results as they type. They must press the Return key or select the search button to see the search results page.
+
+This was added in [pull request #263: Change search to only show results after submit](https://github.com/alphagov/tech-docs-gem/pull/263).
+
+### Fixes
+
+- [#265: Fix mark styles in Windows High Contrast Mode](https://github.com/alphagov/tech-docs-gem/pull/265)
+
+## 2.4.3
+
+- [#236: Fix search 'autocomplete' behaviour](https://github.com/alphagov/tech-docs-gem/pull/236)
+- [#203: Update vendored javascripts](https://github.com/alphagov/tech-docs-gem/pull/203)
+
+## 2.4.2
+
+- [#251 Fix missing `<ul>` in single page navigation](https://github.com/alphagov/tech-docs-gem/pull/251)
+
+## 2.4.1
+
+- [#248: Remove IE8 fallback PNG with broken image reference](https://github.com/alphagov/tech-docs-gem/pull/248)
+
+## 2.4.0
+
+- [Bump redcarpet to 3.5.1 to fix CVE-2020-26298](https://github.com/alphagov/tech-docs-gem/pull/226)
+- [#238: Move the aria-expanded attribute to the correct element](https://github.com/alphagov/tech-docs-gem/pull/238)
+- [#240: Update menu html structure so it's one single hierarchical list](https://github.com/alphagov/tech-docs-gem/pull/240)
+- [#244: Don't change the focus of the page on initial load](https://github.com/alphagov/tech-docs-gem/pull/244)
+- [#243: Fix focus state for links containing inline code](https://github.com/alphagov/tech-docs-gem/pull/243)
+- [#245: Fix focus state for search results ‘Close’ button](https://github.com/alphagov/tech-docs-gem/pull/245)
+- [#246: Update GOV.UK Frontend to v3.13.0](https://github.com/alphagov/tech-docs-gem/pull/246)
+
+## 2.3.0
+
+- [#232: Update GOV.UK Frontend and use new link styles](https://github.com/alphagov/tech-docs-gem/pull/232)
+
+## 2.2.2
+
+- [#223: Remove unnecessary CSS class on the search submit button](https://github.com/alphagov/tech-docs-gem/pull/223)
+- [#224: Accessibility fix: Hide the 'table of contents close' button when search results are open](https://github.com/alphagov/tech-docs-gem/pull/224)
+
+## 2.2.1
+
+- [#218: Remove unnecessary explicit dependencies: sprockets, activesupport, sass and pry](https://github.com/alphagov/tech-docs-gem/pull/218)
+- [#125: Fix API docs showing required properties as optional](https://github.com/alphagov/tech-docs-gem/pull/125)
+
+## 2.2.0
+
+### Accessibility Fixes
+
+- [#205: Improve table of contents accessibility](https://github.com/alphagov/tech-docs-gem/pull/205)
+- [#209: Some search and keyboard navigation updates](https://github.com/alphagov/tech-docs-gem/pull/209)
+- [#210: Stop linking images to new tabs](https://github.com/alphagov/tech-docs-gem/pull/210)
+- [#214: Implement row level table headings to allow accessible tables with row headings](https://github.com/alphagov/tech-docs-gem/pull/214)
+- [#215: Add tabindex and focus states to code blocks](https://github.com/alphagov/tech-docs-gem/pull/215)
+
+### Docs
+
+- [#206: Remove tdt docs content from readme file](https://github.com/alphagov/tech-docs-gem/pull/206)
+
+## 2.1.1
+
+### Fixes
+
+We’ve made fixes in the following pull requests:
+
+- [#199: Fix page expiry box link colours (hover and focus) ](https://github.com/alphagov/tech-docs-gem/pull/199)
+
+### Ruby version bump
+
+We've updated the Ruby version supported:
+
+- [#201: Bump ruby to 2.7.2](https://github.com/alphagov/tech-docs-gem/pull/201)
+
+## 2.1.0
+
+### New features
+
+#### Exclude pages from search engine results
+
+You can now exclude a page from search engine results by including `prevent_indexing: true` in the page's frontmatter.
+
+This was added in [pull request #192: Fixes and improvements to meta tags](https://github.com/alphagov/tech-docs-gem/pull/192).
+
+### Fixes
+
+We’ve made fixes in the following pull requests:
+
+- [#192: Fixes and improvements to meta tags](https://github.com/alphagov/tech-docs-gem/pull/192)
+
+## 2.0.13
+
+- [Pull request #189: Update orange code highlight colour to meet minimum AA colour contrast ratio criterion](https://github.com/alphagov/tech-docs-gem/pull/189)
+
 ## 2.0.12
 
 - [Pull request #179: Use current markup for header and footer](https://github.com/alphagov/tech-docs-gem/pull/179)
@@ -53,7 +188,6 @@ This release contains accessibility fixes:
 You can look at the [2.0.6 milestone](https://github.com/alphagov/tech-docs-gem/milestone/2?closed=1) for the closed issues, and [pull request #129: Accessibility improvements](https://github.com/alphagov/tech-docs-gem/pull/129) for details on how these issues were fixed.
 
 ## 2.0.5
-
 
 Adds [new global configuration option](https://github.com/alphagov/tech-docs-gem/pull/122) that controls whether review banners appear or not at the bottom of pages when expiry dates are set in the frontmatter.
 

@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "activesupport"
+  spec.add_dependency "autoprefixer-rails", "~> 10.2"
   spec.add_dependency "chronic", "~> 0.10.2"
   spec.add_dependency "middleman", "~> 4.0"
   spec.add_dependency "middleman-autoprefixer", "~> 2.10.0"
@@ -42,14 +42,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "middleman-sprockets", "~> 4.0.0"
   spec.add_dependency "middleman-syntax", "~> 3.2.0"
   spec.add_dependency "nokogiri"
-  spec.add_dependency "openapi3_parser", "~> 0.5.0"
-  spec.add_dependency "pry"
-  spec.add_dependency "redcarpet", "~> 3.5.0"
-  spec.add_dependency "sass"
-  spec.add_dependency "sprockets", "~> 4.0.0"
+  spec.add_dependency "openapi3_parser", "~> 0.9.0"
+  spec.add_dependency "redcarpet", "~> 3.5.1"
 
-
-  spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "capybara", "~> 3.32"
   spec.add_development_dependency "jasmine", "~> 3.5.0"
