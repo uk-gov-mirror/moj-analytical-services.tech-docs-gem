@@ -1,17 +1,17 @@
-## Unreleased
+## 5.1.1
 
-### New Features
+### Fixes
 
-- [Adds support for GA4 as a separate tracking parameter from Universal Analytics](https://github.com/alphagov/tech-docs-gem/pull/350)
-
-NB: [Universal Analytics is now gone](https://support.google.com/analytics/answer/11583528?hl=en) so anyone still using the older approach is likely facing broken analytics, or has developed a workaround.
-We'll return at a later date with a major breaking change that deprecates UA code.
+- [Change npm installation method used](https://github.com/alphagov/tech-docs-gem/pull/433)
 
 ## 5.1.0
 
 ### New features
 
 - [Add GA4 support](https://github.com/alphagov/tech-docs-gem/pull/350)
+
+NB: [Universal Analytics is now gone](https://support.google.com/analytics/answer/11583528?hl=en) so anyone still using the older approach is likely facing broken analytics, or has developed a workaround.
+We'll return at a later date with a major breaking change that deprecates UA code.
 
 ### Fixes
 
