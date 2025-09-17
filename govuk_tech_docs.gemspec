@@ -4,8 +4,8 @@ lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "govuk_tech_docs/version"
 
-`npm install`
-abort "npm install failed" unless $CHILD_STATUS.success?
+`npm ci`
+abort "npm ci failed" unless $CHILD_STATUS.success?
 
 unless File.exist?("node_modules/govuk-frontend/dist/govuk/all.scss")
   abort "govuk-frontend npm package not installed"
